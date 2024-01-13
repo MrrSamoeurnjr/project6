@@ -1,0 +1,38 @@
+
+<div class="container-fluid">
+    <header>
+        <h1>myffiliatwebsite</h1>
+    </header>
+    <div class="col-sm-2 mt-3 mb-3">
+        <span>Select category</span>
+        <select class="form-select" aria-label="Default select example" (change)="onChange($event)">
+            <!-- <option selected>select category</option> -->
+            <option *ngFor="let cl of categoryList">{{cl | titlecase}}</option>
+        </select>
+    </div>
+    <div class="row">
+        <div *ngIf="showData; then allData else filter"></div>
+        <ng-template #allData>
+            <div class="col-lg-3 col-12" *ngFor="let item of showallData">
+                <a href="{{item.url}}" target="_blank">
+                <div class="box">
+                    <h2>{{item.name | titlecase}}</h2>
+                    <p><span><i class="bi bi-tag"></i></span><span>{{item.category | titlecase}}</span>|<span><i class="bi bi-back"></i></span> <span>{{item.type | titlecase}}</span></p>
+                    <a>visite site <i class="bi bi-arrow-right"></i></a>
+                </div>
+                </a>
+            </div>
+        </ng-template>
+        <ng-template #filter>
+            <div class="col-lg-3 col-12" *ngFor="let item of filterData">
+                <a href="{{item.url}}" target="_blank">
+                <div class="box">
+                    <h2>{{item.name | titlecase}}</h2>
+                    <p><span><i class="bi bi-tag"></i></span><span>{{item.category | titlecase}}</span>|<span><i class="bi bi-back"></i></span> <span>{{item.type | titlecase}}</span></p>
+                    <a>visite site <i class="bi bi-arrow-right"></i></a>
+                </div>
+                </a>
+            </div>
+        </ng-template>
+    </div>
+</div>
